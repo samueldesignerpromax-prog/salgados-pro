@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Salgados Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🥐</div>
+                <div class="logo-text">Salgados<span>Express</span></div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Início</a>
+                <a href="cardapio.html">Cardápio</a>
+                <a href="sobre.html">Sobre</a>
+                <div class="cart-icon" id="cart-icon">
+                    🛒
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">📝 Finalizar Pedido</h1>
+            
+            <div class="checkout-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px;">
+                <div>
+                    <div class="cart-summary" style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 20px;">🛒 Resumo do Pedido</h3>
+                        <div id="checkout-items"></div>
+                        <div style="border-top: 2px solid #F3F4F6; margin: 20px 0; padding-top: 20px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: bold;">
+                                <span>Total:</span>
+                                <span id="checkout-total" style="color: #FF6B00;">R$ 0,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="checkout-form" style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <h3 style="margin-bottom: 20px;">📋 Informações do Pedido</h3>
+                        
+                        <div class="form-group">
+                            <label>Nome Completo *</label>
+                            <input type="text" id="nome" required placeholder="Digite seu nome completo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Telefone/WhatsApp *</label>
+                            <input type="tel" id="telefone" required placeholder="(11) 99999-9999">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Opção de Entrega *</label>
+                            <div class="delivery-options">
+                                <div class="delivery-option">
+                                    <input type="radio" name="entrega" id="entrega" value="entrega" checked>
+                                    <label for="entrega">🚚 Entrega</label>
+                                </div>
+                                <div class="delivery-option">
+                                    <input type="radio" name="entrega" id="retirada" value="retirada">
+                                    <label for="retirada">🏪 Retirada no Local</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" id="endereco-group">
+                            <label>Endereço de Entrega</label>
+                            <input type="text" id="endereco" placeholder="Rua, número, bairro, complemento">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Forma de Pagamento *</label>
+                            <div class="payment-methods">
+                                <div class="payment-option">
+                                    <input type="radio" name="pagamento" id="pix" value="PIX" checked>
+                                    <label for="pix">💰 PIX</label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" name="pagamento" id="credito" value="Crédito">
+                                    <label for="credito">💳 Cartão Crédito</label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" name="pagamento" id="debito" value="Débito">
+                                    <label for="debito">💳 Cartão Débito</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Observações</label>
+                            <textarea id="observacoes" rows="3" placeholder="Alguma observação?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%; padding: 16px; font-size: 18px;">
+                            ✅ Confirmar Pedido
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Salgados Express</h4>
+                    <p>Os melhores salgados da região com entrega rápida e sabor incomparável.</p>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@salgadosexpress.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">💬</a>
+
+    <script src="script.js"></script>
+    <script>
+        // Mostrar/esconder campo de endereço
+        document.querySelectorAll('input[name="entrega"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const enderecoGroup = document.getElementById('endereco-group');
+                if (this.value === 'entrega') {
+                    enderecoGroup.style.display = 'block';
+                } else {
+                    enderecoGroup.style.display = 'none';
+                }
+            });
+        });
+        
+        // Renderizar itens do carrinho no checkout
+        function renderCheckoutItems() {
+            const container = document.getElementById('checkout-items');
+            const totalElement = document.getElementById('checkout-total');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666;">Seu carrinho está vazio</p>';
+                totalElement.textContent = 'R$ 0,00';
+                return;
+            }
+            
+            container.innerHTML = cart.map(item => `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #F3F4F6;">
+                    <div>
+                        <strong>${item.nome}</strong>
+                        <div style="font-size: 14px; color: #666;">Quantidade: ${item.quantity}</div>
+                    </div>
+                    <div style="font-weight: bold; color: #FF6B00;">R$ ${(item.preco * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+            
+            const total = getCartTotal();
+            totalElement.textContent = `R$ ${total.toFixed(2)}`;
+        }
+        
+        // Enviar pedido
+        document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                showToast('Seu carrinho está vazio!');
+                return;
+            }
+            
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const entrega = document.querySelector('input[name="entrega"]:checked').value;
+            const endereco = entrega === 'entrega' ? document.getElementById('endereco').value : '';
+            const pagamento = document.querySelector('input[name="pagamento"]:checked').value;
+            const observacoes = document.getElementById('observacoes').value;
+            
+            if (!nome || !telefone) {
+                showToast('Por favor, preencha seu nome e telefone');
+                return;
+            }
+            
+            if (entrega === 'entrega' && !endereco) {
+                showToast('Por favor, informe o endereço de entrega');
+                return;
+            }
+            
+            const pedido = {
+                nome,
+                telefone,
+                itens: cart,
+                total: getCartTotal(),
+                entrega,
+                endereco,
+                pagamento,
+                observacoes,
+                data: new Date().toISOString()
+            };
+            
+            // Salvar no localStorage
+            const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+            pedidos.push(pedido);
+            localStorage.setItem('pedidos', JSON.stringify(pedidos));
+            
+            // Limpar carrinho
+            cart = [];
+            saveCart();
+            
+            // Redirecionar para confirmação
+            localStorage.setItem('ultimoPedido', JSON.stringify(pedido));
+            window.location.href = 'confirmacao.html';
+        });
+        
+        renderCheckoutItems();
+    </script>
+</body>
+</html>
