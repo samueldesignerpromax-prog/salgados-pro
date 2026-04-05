@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Salgados Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🥐</div>
+                <div class="logo-text">Salgados<span>Express</span></div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Início</a>
+                <a href="cardapio.html">Cardápio</a>
+                <a href="sobre.html">Sobre</a>
+                <div class="cart-icon" id="cart-icon">
+                    🛒
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">🍽️ Nosso Cardápio</h1>
+            
+            <div class="categories">
+                <button class="category-btn active" data-category="all" onclick="filterByCategory('all')">Todos</button>
+                <button class="category-btn" data-category="tradicionais" onclick="filterByCategory('tradicionais')">🟡 Tradicionais</button>
+                <button class="category-btn" data-category="gourmet" onclick="filterByCategory('gourmet')">🔥 Gourmet</button>
+                <button class="category-btn" data-category="super-premium" onclick="filterByCategory('super-premium')">👑 Super Premium</button>
+                <button class="category-btn" data-category="vegano" onclick="filterByCategory('vegano')">🌱 Vegano</button>
+                <button class="category-btn" data-category="assados" onclick="filterByCategory('assados')">🍗 Assados</button>
+                <button class="category-btn" data-category="doces" onclick="filterByCategory('doces')">🍬 Doces</button>
+                <button class="category-btn" data-category="bebidas" onclick="filterByCategory('bebidas')">🧃 Bebidas</button>
+                <button class="category-btn" data-category="combos" onclick="filterByCategory('combos')">📦 Combos</button>
+            </div>
+            
+            <div class="products-grid" id="full-products-container"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Salgados Express</h4>
+                    <p>Os melhores salgados da região com entrega rápida e sabor incomparável.</p>
+                </div>
+                <div>
+                    <h4>Horário de Funcionamento</h4>
+                    <p>Terça a Domingo: 11h às 22h</p>
+                    <p>Segunda: Fechado</p>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@salgadosexpress.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">💬</a>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>🛒 Seu Carrinho</h3>
+            <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Finalizar Pedido →</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Renderizar todos os produtos
+        const allProducts = Object.values(produtos).flat();
+        renderProducts(allProducts, 'full-products-container');
+    </script>
+</body>
+</html>
