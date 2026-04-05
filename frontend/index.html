@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salgados Express - Os melhores salgados da região</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🥐</div>
+                <div class="logo-text">Salgados<span>Express</span></div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Início</a>
+                <a href="cardapio.html">Cardápio</a>
+                <a href="sobre.html">Sobre</a>
+                <div class="cart-icon" id="cart-icon">
+                    🛒
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Os melhores salgados da região</h1>
+                <p>Entrega rápida e sabor incomparável</p>
+                <div class="hero-buttons">
+                    <a href="cardapio.html" class="btn btn-primary">🍽️ Ver Cardápio</a>
+                    <a href="#promocoes" class="btn btn-secondary">🔥 Ver Promoções</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="promocoes">
+        <div class="container">
+            <h2 class="section-title">🔥 Promoções Especiais</h2>
+            <div class="promo-banner">
+                <h3>🍗 Combo Família</h3>
+                <p>30 Salgados + Refrigerante 2L</p>
+                <div class="price">R$ 150,00</div>
+                <p style="font-size: 14px;">Economize R$ 30,00!</p>
+                <a href="cardapio.html" class="btn btn-primary" style="margin-top: 15px;">Aproveitar Oferta →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🌟 Mais Pedidos</h2>
+            <div class="products-grid" id="products-container"></div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="cardapio.html" class="btn btn-primary">Ver Cardápio Completo →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Salgados Express</h4>
+                    <p>Os melhores salgados da região com entrega rápida e sabor incomparável.</p>
+                </div>
+                <div>
+                    <h4>Horário de Funcionamento</h4>
+                    <p>Terça a Domingo: 11h às 22h</p>
+                    <p>Segunda: Fechado</p>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@salgadosexpress.com</p>
+                </div>
+                <div>
+                    <h4>Formas de Pagamento</h4>
+                    <p>💳 PIX • Cartões • Dinheiro</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">
+        💬
+    </a>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>🛒 Seu Carrinho</h3>
+            <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Finalizar Pedido →</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
