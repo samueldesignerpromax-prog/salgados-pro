@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Salgados Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🥐</div>
+                <div class="logo-text">Salgados<span>Express</span></div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Início</a>
+                <a href="cardapio.html">Cardápio</a>
+                <a href="sobre.html">Sobre</a>
+                <div class="cart-icon" id="cart-icon">
+                    🛒
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">📖 Sobre Nós</h1>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background: white; border-radius: 16px; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <div style="font-size: 60px; text-align: center; margin-bottom: 20px;">🥐</div>
+                    <h2 style="text-align: center; margin-bottom: 20px;">Salgados Express</h2>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                        Fundada em 2020, a Salgados Express nasceu do sonho de levar salgados de alta qualidade 
+                        com preço justo para toda a região. Nossa missão é proporcionar momentos saborosos com 
+                        produtos feitos com ingredientes selecionados e muito amor.
+                    </p>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                        Com mais de 50 opções entre salgados tradicionais, gourmet, opções vegetarianas e doces, 
+                        temos o sabor perfeito para cada momento. Nossos combos são ideais para festas, eventos 
+                        e reuniões familiares.
+                    </p>
+                    <p style="color: #666; line-height: 1.8;">
+                        🎯 <strong>Missão:</strong> Oferecer salgados de qualidade com preço justo e entrega rápida.<br>
+                        👁️ <strong>Visão:</strong> Ser referência em salgados na região.<br>
+                        💎 <strong>Valores:</strong> Qualidade, rapidez, higiene e satisfação do cliente.
+                    </p>
+                </div>
+                
+                <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: white; border-radius: 16px; padding: 24px; text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">🎉</div>
+                        <h3>+50</h3>
+                        <p style="color: #666;">Produtos</p>
+                    </div>
+                    <div style="background: white; border-radius: 16px; padding: 24px; text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">⭐</div>
+                        <h3>+1000</h3>
+                        <p style="color: #666;">Clientes</p>
+                    </div>
+                    <div style="background: white; border-radius: 16px; padding: 24px; text-align: center;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">🚀</div>
+                        <h3>+5000</h3>
+                        <p style="color: #666;">Pedidos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Salgados Express</h4>
+                    <p>Os melhores salgados da região com entrega rápida e sabor incomparável.</p>
+                </div>
+                <div>
+                    <h4>Horário de Funcionamento</h4>
+                    <p>Terça a Domingo: 11h às 22h</p>
+                    <p>Segunda: Fechado</p>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <p>📞 (11) 99999-9999</p>
+                    <p>📧 contato@salgadosexpress.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">💬</a>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>🛒 Seu Carrinho</h3>
+            <button class="close-cart" id="close-cart">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Finalizar Pedido →</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
