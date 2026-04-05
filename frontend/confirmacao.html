@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Confirmado - Salgados Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🥐</div>
+                <div class="logo-text">Salgados<span>Express</span></div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Início</a>
+                <a href="cardapio.html">Cardápio</a>
+                <a href="sobre.html">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto; background: white; border-radius: 16px; padding: 48px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div style="font-size: 80px; margin-bottom: 20px;">✅</div>
+                <h1 style="color: #10B981; margin-bottom: 16px;">Pedido Confirmado!</h1>
+                <p style="color: #666; margin-bottom: 30px;">Seu pedido foi recebido com sucesso. Em breve entraremos em contato para confirmar.</p>
+                
+                <div id="pedido-info" style="background: #F9FAFB; border-radius: 12px; padding: 20px; margin-bottom: 30px; text-align: left;"></div>
+                
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="index.html" class="btn-primary">Voltar ao Início</a>
+                    <a href="cardapio.html" class="btn-secondary">Fazer Novo Pedido</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Salgados Express</h4>
+                    <p>Os melhores salgados da região com entrega rápida e sabor incomparável.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const ultimoPedido = JSON.parse(localStorage.getItem('ultimoPedido'));
+        
+        if (ultimoPedido) {
+            const infoDiv = document.getElementById('pedido-info');
+            infoDiv.innerHTML = `
+                <p><strong>👤 Cliente:</strong> ${ultimoPedido.nome}</p>
+                <p><strong>📞 Telefone:</strong> ${ultimoPedido.telefone}</p>
+                <p><strong>📦 Itens:</strong> ${ultimoPedido.itens.length} produtos</p>
+                <p><strong>💰 Total:</strong> R$ ${ultimoPedido.total.toFixed(2)}</p>
+                <p><strong>🚚 Entrega:</strong> ${ultimoPedido.entrega === 'entrega' ? 'Delivery' : 'Retirada no Local'}</p>
+                ${ultimoPedido.endereco ? `<p><strong>📍 Endereço:</strong> ${ultimoPedido.endereco}</p>` : ''}
+                <p><strong>💳 Pagamento:</strong> ${ultimoPedido.pagamento}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
